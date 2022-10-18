@@ -42,12 +42,13 @@ export default function App() {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
+    const [score, setScore] = useState(0);
 
     const handleAnswerButtonClick = (isCorrect) => {
         const nextQuestion = currentQuestion + 1;
 
         if (isCorrect) {
-            alert('correct answer!')
+            setScore(score + 1);
         }
 
         if(nextQuestion < questions.length){
@@ -65,7 +66,7 @@ export default function App() {
             {/* HINT: replace "false" with logic to display the
       score when the user has answered all the questions */}
             {showScore ? ( //flux 1
-                <div className='score-section'>You scored 1 out of {questions.length}</div>
+                <div className='score-section'>You scored {score} out of {questions.length}</div>
             ) : (
                 <>
                     <div className='question-section'>
